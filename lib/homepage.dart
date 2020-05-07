@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -9,6 +10,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final GoogleSignIn googleSignIn = GoogleSignIn();
+  void signOutGoogle() async {
+    await googleSignIn.signOut();
+    print("User Sign Out");
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -35,6 +42,17 @@ class _HomePageState extends State<HomePage> {
                   }).catchError((e) {
                     print(e);
                   });
+                },
+              ),
+              SizedBox(height: 15.0),
+              RaisedButton(
+                child: Text('Google Logout'),
+                color: Colors.blue,
+                textColor: Colors.white,
+                elevation: 7.0,
+                onPressed: () {
+                  signOutGoogle();
+                  Navigator.of(context).pushReplacementNamed('/landing');
                 },
               ),
             ],
