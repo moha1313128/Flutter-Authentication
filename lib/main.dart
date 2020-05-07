@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'homepage.dart';
 import 'loginpage.dart';
 import 'signuppage.dart';
+import 'signinphone.dart';
 
 void main() => runApp(new MyApp());
 
@@ -13,6 +14,7 @@ class MyApp extends StatelessWidget {
       '/landing': (BuildContext context) => new MyApp(),
       '/signup': (BuildContext context) => new SignupPage(),
       '/home': (BuildContext context) => new HomePage(),
+      '/phone': (BuildContext context) => new PhoneAuth(),
     });
   }
 }

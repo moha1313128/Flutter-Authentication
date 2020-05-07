@@ -12,12 +12,12 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   String _email;
   String _password;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   String name;
   String email;
   String imageUrl;
 
-  final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn = GoogleSignIn();
   Future<String> signInWithGoogle() async {
     final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
@@ -120,7 +120,15 @@ class _LoginPageState extends State<LoginPage> {
                 elevation: 7.0,
                 onPressed: () {
                   signInWithGoogle();
-                  Navigator.of(context).pushReplacementNamed('/home');
+                },
+              ),
+              RaisedButton(
+                child: Text('SignIn With Phone'),
+                color: Colors.blue,
+                textColor: Colors.white,
+                elevation: 7.0,
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/phone');
                 },
               ),
             ],
